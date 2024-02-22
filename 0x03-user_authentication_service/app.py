@@ -33,7 +33,7 @@ def users():
 
 
 @app.route("/sessions", methods=["POST"], strict_slashes=False)
-def login():
+def login() -> str:
     """Route to create new session for user"""
 
     email = request.form.get("email")
@@ -51,7 +51,7 @@ def login():
 
 
 @app.route("/sessions", methods=["DELETE"], strict_slashes=False)
-def logout():
+def logout() -> str:
     """Route to delete a user's session"""
 
     session_id = request.cookies.get("session_id")
@@ -61,7 +61,7 @@ def logout():
         abort(403)
 
     AUTH.destroy_session(user.id)
-    redirect("/")
+    return redirect("/")
 
 
 if __name__ == "__main__":
