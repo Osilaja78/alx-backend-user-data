@@ -55,8 +55,9 @@ class DB:
     def find_user_by(self, **kwargs: Union[str, int]) -> User:
         """Finds a user from arbitrary keyword arguments"""
 
+        session = self._session
         try:
-            user = self._session.query(User).filter_by(**kwargs).one()
+            user = session.query(User).filter_by(**kwargs).one()
         except NoResultFound:
             raise NoResultFound()
         except InvalidRequestError:
