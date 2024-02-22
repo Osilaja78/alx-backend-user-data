@@ -63,6 +63,8 @@ class DB:
             raise InvalidRequestError()
         except Exception as e:
             raise e
+        if user is None:
+            raise NoResultFound()
 
         return user
 
