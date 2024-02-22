@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
-from typing import Union
+from typing import Dict
 import logging
 
 from user import Base, User
@@ -53,7 +53,7 @@ class DB:
             raise e
         return user
 
-    def find_user_by(self, **kwargs: Union[str, int]) -> User:
+    def find_user_by(self, **kwargs: Dict[str, str]) -> User:
         """Finds a user from arbitrary keyword arguments"""
 
         session = self._session
@@ -65,9 +65,3 @@ class DB:
             raise InvalidRequestError()
 
         return user
-    
-    # def update_user(self, ) -> User:
-    #     """Updates user details in database"""
-
-    #     try:
-
