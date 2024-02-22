@@ -122,7 +122,7 @@ class Auth:
         try:
             user = self._db.find_user_by(reset_token=reset_token)
         except NoResultFound:
-            raise ValueError()
+            raise ValueError("Reset token is invalid!")
 
         hashed_p = _hash_password(password.encode('utf-8'))
         self._db.update_user(
