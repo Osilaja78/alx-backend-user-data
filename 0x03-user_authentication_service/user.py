@@ -7,6 +7,7 @@ from sqlalchemy import Column, String, Integer
 
 Base = declarative_base()
 
+
 class User(Base):
     """This class defines the user table"""
 
